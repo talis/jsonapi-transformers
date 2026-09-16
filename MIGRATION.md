@@ -36,4 +36,3 @@ Packages), double check it does not also apply to `@talisdev` - the two are unre
   marked deprecated, pointing here, so a fresh `npm install jsonapi-transformers` warns rather
   than fails.
 - The exported API, TypeScript types and JSON:API behaviour are unchanged by this move.
-

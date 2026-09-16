@@ -1,0 +1,25 @@
+name: commitlint for PR title
+on:
+  pull_request:
+    types: ["opened", "edited", "reopened", "synchronize"]
+
+jobs:
+  commitlint-pr-title:
+    if: contains(github.event.pull_request.labels.*.name, 'dependencies') == false
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Apply commitlint to the PR title
+        run: echo "${{ github.event.pull_request.title }}" | npm exec commitlint

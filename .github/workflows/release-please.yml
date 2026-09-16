@@ -1,0 +1,50 @@
+on:
+  push:
+    branches:
+      - main
+name: release-please
+jobs:
+  release-please:
+    permissions:
+      actions: write
+      checks: write
+      contents: write
+      id-token: write
+      deployments: read
+      issues: read
+      repository-projects: read
+      pull-requests: write
+      statuses: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: GoogleCloudPlatform/release-please-action@v4
+        id: release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: node
+
+      # The logic below handles the npm publication:
+      - uses: actions/checkout@v6
+        # these if statements ensure that a publication only occurs when
+        # a new release is created:
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: "npm"
+          registry-url: "https://registry.npmjs.org/"
+        if: ${{ steps.release.outputs.release_created }}
+
+      - run: npm ci
+        if: ${{ steps.release.outputs.release_created }}
+
+      - run: npm run build
+        if: ${{ steps.release.outputs.release_created }}
+
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        if: ${{ steps.release.outputs.release_created }}

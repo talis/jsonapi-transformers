@@ -1,7 +1,11 @@
 {
-  "name": "jsonapi-transformers",
-  "version": "0.0.0",
+  "name": "@talisdev/jsonapi-transformers",
+  "version": "5.0.7",
   "description": "Typescript-based JSON API serialisation/deserialisation",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "private": false,
   "files": [
     "lib/**/*.d.ts",
     "lib/**/*.js"
@@ -28,7 +32,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/junglebarry/jsonapi-transformers.git"
+    "url": "git+https://github.com/talis/jsonapi-transformers.git"
   },
   "keywords": [
     "Typescript",
@@ -39,9 +43,9 @@
   "author": "David James Brooks",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/junglebarry/jsonapi-transformers/issues"
+    "url": "https://github.com/talis/jsonapi-transformers/issues"
   },
-  "homepage": "https://github.com/junglebarry/jsonapi-transformers#readme",
+  "homepage": "https://github.com/talis/jsonapi-transformers#readme",
   "devDependencies": {
     "@commitlint/cli": "^21.0.0",
     "@commitlint/config-conventional": "^21.0.0",
@@ -57,7 +61,6 @@
     "glob": "^13.0.0",
     "jest": "^30.0.0",
     "prettier": "^3.3.3",
-    "semantic-release": "^25.0.0",
     "ts-jest": "^29.2.3",
     "typescript": "^5.5.3"
   },

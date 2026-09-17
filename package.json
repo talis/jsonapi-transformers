@@ -1,6 +1,6 @@
 {
   "name": "@talisdev/jsonapi-transformers",
-  "version": "5.0.7",
+  "version": "5.0.8",
   "description": "Typescript-based JSON API serialisation/deserialisation",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

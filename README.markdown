@@ -390,4 +390,4 @@ Second, if Yayson cannot resolve a relationship to an entity, the information of
 
 # Migrations and breaking changes
 
-Please see the [CHANGELOG](CHANGELOG)
+Please see the [BREAKING_CHANGES](BREAKING_CHANGES.md) doc for migration notes between major versions, and [CHANGELOG.md](CHANGELOG.md) for the full release history

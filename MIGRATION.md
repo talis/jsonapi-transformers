@@ -28,6 +28,17 @@ If your project maps the `@talis` npm scope to a different registry (for example
 Packages), double check it does not also apply to `@talisdev` - the two are unrelated scopes and
 `@talisdev` packages are published to the public npm registry.
 
+## What else changed under the hood
+
+The release pipeline changed from semantic-release running on CircleCI to release-please running
+on GitHub Actions, matching @talisdev/bibliographic-resource-parsers-lib. The previous setup
+depended on a personal CircleCI account for its Docker Hub login, its GitHub token, and its
+checkout key. release-please is what the rest of the org's npm libraries already use, so this
+brings the pipeline in line with something the current team actually operates. CircleCI still
+runs lint, type checks and tests on every push; it no longer publishes. Merging a PR here no
+longer publishes anything directly - merging opens a release PR, and merging that release PR is
+what triggers the npm publish.
+
 ## What does not change
 
 - The unscoped `jsonapi-transformers` package on npm is not removed. Its existing published

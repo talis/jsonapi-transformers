@@ -1,0 +1,51 @@
+# Managed centrally: replaces Renovate. Security updates are enabled org-wide via GitHub code security configuration.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directories:
+      - "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/London"
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
+    groups:
+      github_actions-minor-patch:
+        applies-to: version-updates
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+      github_actions-major:
+        applies-to: version-updates
+        patterns: ["*"]
+        update-types: ["major"]
+      github_actions-security:
+        applies-to: security-updates
+        patterns: ["*"]
+
+  - package-ecosystem: "npm"
+    directories:
+      - "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/London"
+    cooldown:
+      default-days: 7
+      semver-major-days: 30
+    open-pull-requests-limit: 5
+    groups:
+      npm-minor-patch:
+        applies-to: version-updates
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+      npm-major:
+        applies-to: version-updates
+        patterns: ["*"]
+        update-types: ["major"]
+      npm-security:
+        applies-to: security-updates
+        patterns: ["*"]
